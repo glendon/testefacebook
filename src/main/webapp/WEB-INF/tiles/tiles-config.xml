@@ -1,0 +1,29 @@
+
+<!DOCTYPE tiles-definitions PUBLIC
+"-//Apache Software Foundation//DTD
+Tiles Configuration 2.0//EN"
+"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+	<!-- Definição básica -->
+	<definition name="main" template="/WEB-INF/templates/main.jsp">
+		<put-attribute name="titulo" value="Spring Fórum" />
+		<put-attribute name="cabecalho" value="/WEB-INF/templates/header.jsp" />
+		<put-attribute name="rodape" value="/WEB-INF/templates/footer.jsp" />
+	</definition>
+	
+	<definition name="teste" extends="main">
+		<put-attribute name="conteudo" value="/WEB-INF/jsp/teste.jsp" />
+	</definition>
+	
+	<definition name="index" extends="main">
+		<put-attribute name="conteudo" value="/WEB-INF/jsp/index.jsp" />		
+	</definition>
+	
+	<definition name="signup" extends="main">
+		<put-attribute name="conteudo" value="/WEB-INF/jsp/signup.jsp" />
+		<put-attribute name="titulo" value="Bem vindo(a)!" />
+	</definition>
+	
+</tiles-definitions>
