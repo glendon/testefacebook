@@ -9,26 +9,29 @@ import java.net.URL;
 import org.json.JSONObject;
 import org.springframework.stereotype.Component;
 
+import br.com.testkiller.model.UsuarioFacebook;
+
 @Component
 public class LoginFacebook {
 	   
-    private static final String client_secret = "eac362e4590c2e6403421563b6fc16e4";
+    private static final String client_secret = "";
     private static final String client_id = "618780288218697"; 
     private static final String redirect_uri = "http://localhost:8080/testeconcrete/loginfbresponse";
 
 	
-	public boolean obterUsuarioFacebook(String code)
+	public void obterUsuarioFacebook(String code)
 			throws MalformedURLException, IOException {
 
 		String retorno = readURL(new URL(this.getAuthURL(code)));
 
 		String accessToken = null;
+		@SuppressWarnings("unused")
 		Integer expires = null;
 		String[] pairs = retorno.split("&");
 		for (String pair : pairs) {
 			String[] kv = pair.split("=");
-			if (kv.length != 2) {
-				throw new RuntimeException("Resposta auth inesperada.");
+			if (kv.length != 2) {				
+				throw new RuntimeException("Resposta auth inesperada.");				
 			} else {
 				if (kv[0].equals("access_token")) {
 					accessToken = kv[1];
@@ -42,9 +45,8 @@ public class LoginFacebook {
 		JSONObject resp = new JSONObject(readURL(new URL(
 				"https://graph.facebook.com/me?access_token=" + accessToken)));
 
-		System.out.println(resp.toString());
-
-		return true;
+		UsuarioFacebook usuarioFacebook = new UsuarioFacebook(resp);
+		System.out.println(usuarioFacebook.toString());		
 
 	}
 
