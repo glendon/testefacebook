@@ -2,11 +2,11 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>br.com.testeconcrete</groupId>
-	<artifactId>testeconcrete</artifactId>
+	<artifactId>java-oauth-facebook-client</artifactId>
 	<packaging>war</packaging>
 	<version>1.0-SNAPSHOT</version>
-	<name>testeconcrete Maven Webapp</name>
-	<url>http://maven.apache.org</url>
+	<name>java-oauth-facebook-client</name>
+
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -40,19 +40,14 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-			<version>1.5.6</version>
-		</dependency>
-		
-		<dependency>
 			<groupId>org.json</groupId>
 			<artifactId>json</artifactId>
 			<version>20140107</version>
 		</dependency>
 
 	</dependencies>
+
 	<build>
-		<finalName>testeconcrete</finalName>
+		<finalName>java-oauth-facebook-client</finalName>
 	</build>
 </project>
