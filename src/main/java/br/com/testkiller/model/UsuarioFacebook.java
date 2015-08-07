@@ -19,22 +19,62 @@ public class UsuarioFacebook {
 	
 	public UsuarioFacebook(JSONObject jsonUsuario){
 		
-		id = jsonUsuario.getLong("id");
-		firstName = jsonUsuario.getString("first_name");
-		timezone = jsonUsuario.getInt("timezone");
-		email = jsonUsuario.getString("email");
-		verified = jsonUsuario.getBoolean("verified");
-		middleName = jsonUsuario.getString("middle_name");
-		gender = jsonUsuario.getString("gender");
-		lastName = jsonUsuario.getString("last_name");
-		link = jsonUsuario.getString("link");
-		locale = jsonUsuario.getString("locale");
-		name = jsonUsuario.getString("name");
-		updatedTime = jsonUsuario.getString("updated_time");
+		String[] fields = JSONObject.getNames(jsonUsuario);
 		
+		for (String field : fields) {
+			if (field.equals("id")) {
+				id = jsonUsuario.getLong("id");
+				continue;
+			}
+			if (field.equals("first_name")) {
+				firstName = jsonUsuario.getString("first_name");
+				continue;
+			}
+			if (field.equals("timezone")) {
+				timezone = jsonUsuario.getInt("timezone");
+				continue;
+			}
+			if (field.equals("email")) {
+				email = jsonUsuario.getString("email");
+				continue;
+			}
+			if (field.equals("verified")) {
+				verified = jsonUsuario.getBoolean("verified");
+				continue;
+			}
+			if (field.equals("middle_name")) {
+				middleName = jsonUsuario.getString("middle_name");
+			}
+			if (field.equals("gender")) {
+				gender = jsonUsuario.getString("gender");
+				continue;
+			}
+			if (field.equals("last_name")) {
+				lastName = jsonUsuario.getString("last_name");
+				continue;
+			}
+			if (field.equals("link")) {
+				link = jsonUsuario.getString("link");
+				continue;
+			}
+			if (field.equals("locale")) {
+				locale = jsonUsuario.getString("locale");
+				continue;
+			}
+			if (field.equals("name")) {
+				name = jsonUsuario.getString("name");
+				continue;
+			}
+			if (field.equals("updated_time")) {
+				updatedTime = jsonUsuario.getString("updated_time");
+				continue;
+			}
+		}
 	}
 
-
+	public String getName() {
+		return name;
+	}
 
 	@Override
 	public String toString() {

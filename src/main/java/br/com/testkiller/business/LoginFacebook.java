@@ -13,11 +13,6 @@ import br.com.testkiller.model.UsuarioFacebook;
 
 @Component
 public class LoginFacebook {
-	   
-    private static final String client_secret = "";
-    private static final String client_id = "618780288218697"; 
-    private static final String redirect_uri = "http://localhost:8080/testeconcrete/loginfbresponse";
-
 	
 	public void obterUsuarioFacebook(String code)
 			throws MalformedURLException, IOException {
@@ -46,6 +41,9 @@ public class LoginFacebook {
 				"https://graph.facebook.com/me?access_token=" + accessToken)));
 
 		UsuarioFacebook usuarioFacebook = new UsuarioFacebook(resp);
+
+		System.out.println("Usuario encontrado: ");
+		System.out.println(usuarioFacebook.getName());		
 		System.out.println(usuarioFacebook.toString());		
 
 	}
@@ -62,14 +60,14 @@ public class LoginFacebook {
 
 	public String getLoginRedirectURL() {
 		return "https://graph.facebook.com/oauth/authorize?client_id="
-				+ client_id + "&display=page&redirect_uri=" + redirect_uri
-				+ "&scope=publish_stream,email,publish_actions";
+				+ DadosDaAppNoFacebook.CLIENT_ID + "&display=page&redirect_uri=" + DadosDaAppNoFacebook.REDIRECT_URI
+				+ "&scope=email,publish_actions";
 	}
 
 	public String getAuthURL(String authCode) {
 		return "https://graph.facebook.com/oauth/access_token?client_id="
-				+ client_id + "&redirect_uri=" + redirect_uri
-				+ "&client_secret=" + client_secret + "&code=" + authCode;
+				+ DadosDaAppNoFacebook.CLIENT_ID + "&redirect_uri=" + DadosDaAppNoFacebook.REDIRECT_URI
+				+ "&client_secret=" + DadosDaAppNoFacebook.CLIENT_SECRET + "&code=" + authCode;
 	}
 
 }
